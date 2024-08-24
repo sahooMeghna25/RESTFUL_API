@@ -26,6 +26,17 @@ app.post("/students", (req, res) => {
     });
 });
 
+//Read the student data
+
+app.get("/students", async (req, res) => {
+  try {
+    const data = await Student.find();
+    res.send(data);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server Listening on ${port}`);
 });
